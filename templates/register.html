@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SignUp</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- css link -->
+        <link rel="stylesheet" href="/static/css/signup.css">
+        <!-- font awsome library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- specail title fontfamily -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+        <!-- bootstrap link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    </head>
+    <body class="px-3">
+        <div class="d-flex justify-content-center">
+            <div class="logo"></div>
+        </div>
+        <h1 class="text-center orange display-2 mb-4">Burgertory</h1>
+        <div class="container d-flex justify-content-center ">
+            <form class="d-flex flex-column gap-3 justify-content-center align-items-center p-4 px-sm-5 px-4" action="register"  method="POST">
+                {% csrf_token %}
+                <p class="text-white fs-3 text-center">Sign Up</p>
+                <div class="input-row d-flex align-items-center justify-content-center flex-wrap gap-2 gap-xl-5">
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class=" mb-0 fs-5 text-white">UserName :</p>                        
+                        <input type="text" class="p-2" name="username" required placeholder = "Username">
+                    </div>
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class="mb-0 fs-5 text-white">FirstName :</p>
+                        <input type="text" class="p-2" name="first_name" required placeholder = "Firstname">
+                    </div>
+                </div>
+                
+                <div class="input-row d-flex align-items-center justify-content-center flex-wrap gap-2 gap-xl-5">
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class="mb-0 fs-5 text-white">LastName :</p>
+                        <input type="text" class="p-2" name="last_name" required placeholder = "Lastname">
+                    </div>
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class="mb-0 fs-5 text-white">Email :</p>
+                        <input type="text" class="p-2" name="email" placeholder = "Email">
+                    </div>
+                </div>
+                <div class="input-row d-flex align-items-center justify-content-center flex-wrap gap-2 gap-xl-5">
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class="mb-0 fs-5 text-white">Password :</p>
+                        <input type="password" class="p-2" name="password1" required placeholder = "password">
+                    </div>
+                    <div class="input d-flex align-items-center gap-2 flex-wrap">
+                        <p class="mb-0 fs-5 text-white">Confirm Password :</p>
+                        <input type="password" class="p-2" name="password2" required     placeholder = "Confirm password">
+                    </div>
+                </div>
+                <button class="align-self-center px" type="submit">Let's Eat</button>
+                <div>
+                    <a href="{% url 'login' %}">Alread Have an Acount</a>
+                    {% for message in messages %}
+                    <h3 class="text-white orange" id="invalid-password"> {{message}} </h3>
+                    {% endfor %}
+                </div>
+            </form> 
+        </div>
+        <footer class="position-absolute bottom-0 text-white ms-auto w-100 py-3">
+            <ul class="d-flex flex-wrap gap-2  justify-content-center gap-lg-5 list-unstyled mb-0">
+                <li>&copy; 2022 Resturant. All Rights Reserved.</li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Privacy</a> </li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Terms & Condtions </a></li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Website Terms of Use </a></li>
+            </ul>
+        </footer>
+    </body>
+</html>
+
+
+
+
+
+<!-- make css file for common itmes between (login and signup) -->

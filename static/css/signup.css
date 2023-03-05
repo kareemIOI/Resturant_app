@@ -1,0 +1,104 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 2px solid red; */
+}
+.orange{
+    color: orange;
+}
+p{
+    margin-bottom: 0;
+}
+.logo{
+    width: 180px;
+    height: 180px;
+    background-image: url(/static/imgs/logo2.png);
+    background-size: cover; 
+}
+body{
+    position: relative;    
+    min-height: 100vh;
+    background-image: url(/static/imgs/signup.jpg);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    font-family: monospace;
+    padding: 0 0 50px;
+    font-family: monospace;
+}
+body::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.481);
+    z-index: -2;
+}
+h1{
+    font-family: 'Cookie', cursive;
+    font-weight: lighter;
+}
+.container{
+    margin-bottom: 100px;
+}
+form{
+    max-width: fit-content;
+    width: 100%;
+    height: fit-content;
+    min-height: 300px;
+    height: 100%;
+    background-color: rgb(30, 30, 30);
+}
+form button{
+    width: 100px;
+    font-size: .9rem;
+    border: 1px solid orange;
+    transition: .5s ease;
+    cursor: pointer;
+    margin: 40px 0 0;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: orange;
+    font-weight: bold;
+}
+form button:hover{
+    background-color: orange;
+    color: white;
+}
+form .input input{
+    width: 100%;
+    /* width: 300px; */
+    background-color: transparent;
+    border: 1px solid white;
+    outline: none;
+    transition: .5s ease;
+    color: white;
+    caret-color: orange;
+}
+form .input input:hover,
+form .input input:focus,
+form .input p{
+    border-color: orange;
+}
+form .input p{
+    width: 210px;
+}
+#invalid-password{
+    font-size: 1rem;
+    margin: 20px 0 0;
+    font-weight: 400;
+}
+footer{
+    left: 50%;
+    transform: translateX(-50%);
+        border-top: 1px solid rgba(255, 255, 255, 0.278);
+}
+form a{
+    color: orange;
+    font-size:.8rem;
+}
+form a:hover{
+    color: orange;
+}

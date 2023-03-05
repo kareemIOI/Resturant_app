@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock title %}
+
+{% block body %}
+<!-- <h4 style = 'padding-top: 200px';>this is my about page.. there is a padding-top: 200px to get this appearing here<br> because if not the h4 will be behind the nav</h4> -->
+<!--  -->
+<div class="about-us ">
+    <div class="container">
+        <div class="intro-text">
+            <h3 class="intro-secTitle m-0 text-center">Contact Us</h3>
+            <h1 class=" mb-1 text-center text-black display-6 fw-bold">
+                Get In Touch
+            </h1>
+            <p class="text-center my-4 text-black-50" style="max-width:800px;">!
+                Lorem ipsum dolor sit amet. Iste quasi soluta quam  nam laborum deserunt voluptatibus nesciunt nisi et mollitia veritatis optio deleniti qui voluptatum, ad facere alias?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae impedit a obcaecati non voluptas delectus iste itaque? Molestiae deleniti placeat rem, dolorum, facilis veritatis alias numquam voluptatum, fuga soluta accusamus!
+            </p>
+        </div>   
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{/statici/mgs/aboutus1.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="/static/imgs/aboutus2.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="/static/imgs/aboutus3.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="/static/imgs/test.jpg" />
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <p class="mt-3 text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima culpa nemo natus incidunt sed qui exercitationem veniam dolor. Ex debitis est quidem itaque molestias iste tempora non, numquam consectetur sint?</p>
+        <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae recusandae vel, perferendis exercitationem, minima unde ipsa molestias tempore consequuntur qui dolore quibusdam id soluta dolorum eum corrupti cumque? Quasi, consequatur?</p>
+    </div>
+</div>
+<!-- start of AboutCards section -->
+<div class="AboutCards">
+    <div class="container bg-danger">
+        <div class="roww d-flex bg-info justify-content-end">
+            <div class="card-holder bg-danger  position-relative " style="width:500px;">
+                <div class="card position-absolute bg-white">
+                    <div class="left-card"></div>
+                    <div class="header cookie">
+                        our Breave
+                    </div>
+                    <h1>What We Do</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe repellat optio, doloribus atque eos nemo? Inventore accusamus excepturi quasi, dicta, quaerat deserunt dignissimos natus ad hic expedita aliquid temporibus?</p>
+                </div>
+            </div>
+            <div class="card-holder">
+                <img src="/static/imgs/chef44.jpg" style="width: 570px; height: 600px;" alt="">
+            </div>
+        </div>
+    </div>
+
+</div> 
+<!-- end of chef section -->
+<!-- Demo styles -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.about-us{
+    padding: 50px 0;
+    margin-top: 50px;
+    background-image: url(/static/imgs/test13.jpg);
+    background-size: cover;
+    background-position: right;
+}
+.intro-text p{
+    margin: 0 auto;
+    max-width: 600px;
+}
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    max-width: 550px;
+    width: 100%;
+    max-height: 550px;
+    height: 100%;
+}
+.swiper-slide-prev{
+    transform: rotateX(120deg);
+}
+.swiper-slide-active{
+    outline: 10px solid orange;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+.card{
+    max-width: 600px;
+    height: 400px;
+    left: 150px;
+    bottom: 50px;
+    z-index: 100;
+}
+</style>
+{% include 'footer.html' %}
+{% endblock body %}

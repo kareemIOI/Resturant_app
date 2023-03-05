@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block contacts %}
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-0 position-fixed w-100 text-white">
+            <div class="container">
+                <img src="/static/imgs/logo2.png" class=" navbar-brand me-5" alt="">
+                <!-- <a class="navbar-brand me-5" href="#"></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-white pb-4 pb-md-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 justify-content-center gap-3">
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="{% url 'chefs' %}">Chefs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="{% url 'blog' %}">Blogs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center justify-content-center mb-3 mb-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="me-3 list-unstyled">{{user.first_name}}</li>
+                        <a href="accounts/logout" class="logout text-decoration-none border-1 border-white btn text-white">logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" id="login" class="border-1 border-white btn text-decoration-none me-3 text-white">Log in</a>
+                            <a href="{% url 'register' %}" id="signup" class="border-1 border-white btn text-decoration-none text-white">Sign up</a>
+                            {% endif%}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="contact-us">
+            <!-- add open hours section -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <div class="container text-center   ">
+                <div class="intro-text">
+                    <h3 class="intro-secTitle m-0 text-center">Contact Us</h3>
+                    <h1 class=" mb-1 text-center text-black display-5 fw-light">
+                        Get In Touch
+                    </h1>
+                    <p class="text-center my-4 text-black-50">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus numquam aliquam nesciunt maiores debitis dolores!</p>
+                    <div id="horizontalLine"></div>
+                </div>   
+                <form action="#" class="w-100">
+                    <div class="rows d-flex flex-wrap justify-content-xl-around my-5">
+                        <input type="text" placeholder="Enter your name" class="mb-xl-0 mb-3">
+                        <input type="text" placeholder="Enter your email">
+                    </div>
+                    <textarea placeholder="Enter your message"></textarea>
+                    <div>
+                        <button class=" d-block">Send Message</button>
+                    </div>
+                </form>
+                <div class="map my-5">
+                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.778293393525!2d-0.18701820000000002!3d51.4622269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9051986903ff44e6!2sMcDonald&#39;s!5e0!3m2!1sar!2str!4v1671875748515!5m2!1sar!2str"  height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+        {% endblock contacts %}

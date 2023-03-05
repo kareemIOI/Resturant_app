@@ -1,0 +1,56 @@
+nav{
+    top: 0px;
+    background-Color : rgb(40, 40, 40);
+    transition: .4s ease-in;
+    z-index: 100;
+}
+nav img{
+    width: 90px;
+    height: 90px;
+}
+nav .button{
+    border: 2px solid white;
+    color: white;
+}
+nav .navbar-nav li{
+    transition: .7s ease;
+}
+
+
+
+
+
+
+
+footer{
+    min-height: 60vh;
+    background-image: url(/static/imgs/footer2.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+footer::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.564);
+}
+footer .container{
+    position: relative;
+    z-index: 2;
+}
+footer .logo{
+    width: 100px;
+    height: 100px;
+}
+footer .socail-media li a i{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
