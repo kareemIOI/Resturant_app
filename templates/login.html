@@ -1,61 +1,71 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <footer class="pb-3 px-4">
-            <div class="container text-white">
-                <img src="/static/imgs/logo2.png" class="logo" alt="">
-                <div class="row justify-content-center">
-                    <div class="aboutUs col-12 col-lg-4 ">
-                        <p class="intro-secTitle">About Us</p>
-                        <p class="text-white-50 my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate eius nihil illo sapiente deserunt quaerat!</p>
-                        <ul class="socail-media list-unstyled d-flex gap-3">
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-facebook-f"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-twitter"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-instagram"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-linkedin-in"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-youtube"></i></a></li>
+{% include 'base.html' %}
+    <body class="px-3">
+        <div class="d-flex justify-content-center">
+            <div class="logo"></div>
+        </div>
+        <h1 class="text-center orange display-2 mb-4">Burgertory</h1>
+        <div class="container">
+            <div class="row justify-content-center gap-5">
+                <div class="container1 order-1 order-lg-0 text-white col-12 col-lg-6 border-1 border-white border p-sm-5 px-sm-5 p-3">
+                    <h3>Apply for Membership</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing .eniam culpa reprehenderit neque tenetur, ut molestias, nam delectus voluptatem quasi esse optio? Provident.</p>
+                    <div class="lines d-flex flex-column gap-4 mt-4 mb-5">
+                        <div class="line-check d-flex align-items-center gap-2 ps-5">
+                            <i class="fa fa-solid fa-check"></i>
+                            <p class="mb-0 fw-light">Search local branch inventroy</p>
+                        </div>
+                        <div class="line-check d-flex align-items-center gap-2 ps-5">
+                            <i class="fa fa-solid fa-check"></i>
+                            <p class="mb-0 fw-light">Creat a shoping list or order guide</p>
+                        </div>
+                        <div class="line-check d-flex align-items-center gap-2 ps-5">
+                            <i class="fa fa-solid fa-check"></i>
+                            <p class="mb-0 fw-light">Use online ordering services</p>
+                        </div>
+                        <div class="line-check d-flex align-items-center gap-2 ps-5">
+                            <i class="fa fa-solid fa-check"></i>
+                            <p class="mb-0 fw-light">Get copies of receipts</p>
+                        </div>
+
+                    </div>
+                    <button class="w-100 p-3 bg-transparent text-white border border-1 border-white">Apply Now</button>
+                </div>
+                <div class="container2 p-4 py-4 col-lg-5 order-0 order-lg-1">
+                    <h3 class="text-white text-capitalize">logIn</h3>
+                    <form  action = "login" method = "POST">
+                        {% csrf_token %}
+                        <div class="rows text-start text-white">
+                            <span class="username">Username :</span>
+                            <input class="w-100 text-white bg-transparent" type = "text" autocomplete="off" name = "username" required maxlength="10"  placeholder = "username"><br>
+                        </div>
+                        <div class="rows text-start text-white">
+                            <span class="password">password :</span>
+                            <input class="w-100 text-white bg-transparent"  type = "password" autocomplete="off" name = "password" required placeholder ="password"><br>
+                            <a class="orange link" href="">forget password?</a>
+                        </div>
+                        <div class="Lastrow text-center">
+                            <input class="orange fw-bold" type = "submit">
+                            <a class="orange" href="{% url 'register' %}">Create an account</a>
+                        </div>
+                        <div>
+                            {% for message in messages %}
+                            <h5 class="orange" id="invalid-password"> {{message}} </h5>
+                            {%endfor%}
+                        </div>
+                        <ul class="list-unstyled position-absolute d-flex justify-content-center">
+                            <li><a href="#"><i class="d-flex justify-content-center align-items-center bg-transparent fa fa-brands fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="d-flex justify-content-center align-items-center bg-transparent fa fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="d-flex justify-content-center align-items-center bg-transparent fa fa-brands fa-twitter"></i></a></li>
                         </ul>
-                    </div>
-        
-                    <div class="openningHours col-12 col-lg-4">
-                        <p class="intro-secTitle">Hours</p>
-                        <div class="d-block d-sm-flex gap-sm-4 d-lg-block gap-5">
-                            <p class="text-white"><span class="orange fw-bold">Mon - Thus:</span> 9Am - 5Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Wen - Thu:</span> 9Am - 5Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Fri - Sat:</span> 10Am - 4Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Sun:</span> 10Am - 6Pm</p>
-                        </div>
-                    </div>
-        
-                    <div class="lastUpdates col-12 col-lg-4">
-                        <p class="intro-secTitle">Lastest Posts</p>
-                        <div class="row gap-1 mb-3">
-                            <div class="col-3 postImg postImg1"></div>
-                            <div class="col-8">
-                                <p>Assertively viusalize best-of-breed customers.</p>
-                                <p class="text-white-50"><i class="fas fa-calendar-alt"></i> 05 June, 2022</p>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-3 postImg postImg2"></div>
-                            <div class="col-8">
-                                <p>Assertively viusalize best-of-breed customers.</p>
-                                <p class="text-white-50"><i class="fas fa-calendar-alt"></i> 05 June, 2022</p>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </footer>
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+        </div>
+        {% comment %} <footer class="position-absolute bottom-0 text-white ms-auto w-100 py-3">
+            <ul class="d-flex flex-wrap gap-2  justify-content-center gap-lg-5 list-unstyled mb-0">
+                <li>&copy; 2022 Resturant. All Rights Reserved.</li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Privacy</a> </li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Terms & Condtions </a></li>
+                <li class="fw-bold"><a class="text-white text-decoration-none" href="">Website Terms of Use </a></li>
+            </ul>
+        </footer> {% endcomment %}
