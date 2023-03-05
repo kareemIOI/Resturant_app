@@ -1,61 +1,481 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <footer class="pb-3 px-4">
-            <div class="container text-white">
-                <img src="/static/imgs/logo2.png" class="logo" alt="">
-                <div class="row justify-content-center">
-                    <div class="aboutUs col-12 col-lg-4 ">
-                        <p class="intro-secTitle">About Us</p>
-                        <p class="text-white-50 my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate eius nihil illo sapiente deserunt quaerat!</p>
-                        <ul class="socail-media list-unstyled d-flex gap-3">
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-facebook-f"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-twitter"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-instagram"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-linkedin-in"></i></a></li>
-                            <li><a class="text-decoration-none" href=""><i class="border  border-1 rounded-circle fab fa-youtube"></i></a></li>
-                        </ul>
+{% extends 'base.html' %}
+{% block title %}Orders{% endblock title %}
+{% block body %}
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-0 position-fixed w-100 text-white">
+            <div class="container">
+                <img src="/static/imgs/logo2.png" class=" navbar-brand me-5" alt="">
+                <!-- <a class="navbar-brand me-5" href="#"></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-white pb-4 pb-md-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 justify-content-center gap-3">
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="{% url 'chefs' %}">Chefs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="{% url 'blog' %}">Blogs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center justify-content-center mb-3 mb-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="me-3 list-unstyled">{{user.first_name}}</li>
+                        <a href="accounts/logout" class="logout text-decoration-none border-1 border-white btn text-white">logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" id="login" class="border-1 border-white btn text-decoration-none me-3 text-white">Log in</a>
+                            <a href="{% url 'register' %} " id="signup" class="border-1 border-white btn text-decoration-none text-white">Sign up</a>
+                            {% endif%}
                     </div>
-        
-                    <div class="openningHours col-12 col-lg-4">
-                        <p class="intro-secTitle">Hours</p>
-                        <div class="d-block d-sm-flex gap-sm-4 d-lg-block gap-5">
-                            <p class="text-white"><span class="orange fw-bold">Mon - Thus:</span> 9Am - 5Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Wen - Thu:</span> 9Am - 5Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Fri - Sat:</span> 10Am - 4Pm</p>
-                            <p class="text-white"><span class="orange fw-bold">Sun:</span> 10Am - 6Pm</p>
-                        </div>
-                    </div>
-        
-                    <div class="lastUpdates col-12 col-lg-4">
-                        <p class="intro-secTitle">Lastest Posts</p>
-                        <div class="row gap-1 mb-3">
-                            <div class="col-3 postImg postImg1"></div>
-                            <div class="col-8">
-                                <p>Assertively viusalize best-of-breed customers.</p>
-                                <p class="text-white-50"><i class="fas fa-calendar-alt"></i> 05 June, 2022</p>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-3 postImg postImg2"></div>
-                            <div class="col-8">
-                                <p>Assertively viusalize best-of-breed customers.</p>
-                                <p class="text-white-50"><i class="fas fa-calendar-alt"></i> 05 June, 2022</p>
-                            </div>
+                </div>
+            </div>
+        </nav>
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="section-intro d-flex align-items-center">
+            <div class="container text-white d-flex align-items-center">
+                <div class="row align-items-center justify-content-center gap-sm-5 gap-5 w-100">
+                    <div class="text-start col-lg-8 col-12">
+                        <div class="intro-text  text-center">
+                            <h1 class="display-2 fw-light orange">Fast order</h1>
+                            <h1 class="display-2 fw-light mb-4">Enjoy delicious food with family</h1>
+                            <button class="button">order now</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+        </div>
+
+
+        <div class="menuSction ">
+            <div class="container">
+                <!-- <div class="flyingfood fy1"></div> -->
+                <!-- <div class="flyingfood fy2"></div> -->
+                <!-- <div class="flyingfood fy3"></div> -->
+                <!-- <div class="flyingfood fy4"></div> -->
+                <div class="list-toggler d-flex flex-wrap justify-content-center mb-5 gap-3 mb-3">
+                    <div class="sec  checked breakfast text-center text-black d-flex flex-column align-items-center"><p class="mb-0">Breakfast</p><div class="icon icon1"></div></div>
+                    <div class="sec lunch text-center text-black d-flex flex-column align-items-center"><p class="mb-0">Lunch</p><div class="icon icon2"></div></div>
+                    <div class="sec dinner text-center text-black d-flex flex-column align-items-center"><p class="mb-0">Dinner</p><div class="icon icon3"></div></div>
+                    <div class="sec dessert text-center text-black d-flex flex-column align-items-center"><p class="mb-0">Desert</p><div class="icon icon4"></div></div>
+                </div>
+                <div class="lists">
+                    <div class="list breackfast gap-2 gap-md-4 d-flex justify-content-center flex-wrap">
+                        <div class="card overflow-hidden border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img loading="lazy" src="/static/imgs/brackfast1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img loading="lazy" src="/static/imgs/brackfast2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img loading="lazy" src="/static/imgs/brackfast3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/brackfast4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/brackfast5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/brackfast6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list lunch gap-2 gap-md-4 d-none flex-wrap justify-content-center">
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/lunch1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-4">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/lunch2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/lunch3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/lunch4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/lunch5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/lunch6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list dinner gap-2 gap-md-4 d-none flex-wrap justify-content-center">
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dinner1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dinner2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dinner3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dinner4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dinner5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dinner6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list dessert gap-2 gap-md-4 d-none flex-wrap justify-content-center">
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dessert1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dessert2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <div class="speacial-one pt-2 ps-4 text-white fw-bold">Today's dish</div>
+                            <img src="/static/imgs/dessert3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dessert4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dessert5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                        <div class="card border border-1 border-opacity-75" >
+                            <img src="/static/imgs/dessert6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body position-relative p-3">
+                                <h5 class="card-title">New Stuffed Strawberry</h2>
+                                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="price position-absolute">15$</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a id="appointment" href = "{% url 'index' %}">Maka an appointment</a>
+                <button id="orderNow">Order Now</button>
+            </div>
+        </div>
+
+
+        <div class="orderMenu closeMenu gap-2">
+            <button class="closeButton">X</button>
+            <div class="container d-flex">
+                
+                <div class="bill order-5 order-xlg-0 text-white d-flex flex-column justify-content-between">
+                    <div class="bill-details">
+                        <div class="logo d-flex align-items-center ">
+                            <img src="/static/imgs/logo2.png" width="80" alt="">
+                            <p class="specail-title display-5 mb-0">BurgerHouse</p>
+                        </div>
+                        <h5>BILL</h5>
+                        <!-- <div class="roww">
+                            <label for="">confirm Password</label>
+                            <input type="text">
+                        </div>
+                        <div class="roww">
+                            <label for="">Phone</label>
+                            <input type="number">
+                        </div> -->
+                        <div class="items">
+                            <p></p>
+                            <!-- <div class="item d-flex justify-content-between">
+                                <span class="item-id">2</span>
+                                <span class="itme-name">Pizza</span>
+                                <span class="item-number">3</span>
+                                <span class="item-price">3000</span>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                    <div class="total">
+                        <hr>
+                        <div>
+                            <span>Services Charge</span>
+                            <span>3000</span>
+                        </div>
+                        <span>total</span>
+                        <span class="full-total">30000</span>
+                        <button>OK</button>                    
+                        <!-- <p>Thank You for Dining with us , please contact us for any problem</p> -->
+                    </div>
+                </div>
+
+                <div class="orderList">
+                    <div class="rows d-flex flex-column gap-5 p-3">
+                        <div class="pizza">
+                            <h3 class="text-white mb-3">Pizza</h3>
+                            <div class="pizza-itmes d-flex gap-2 justify-content-center flex-wrap">
+                                <div data-foodName="pizza1" data-foodPrice="2000" class="img imgone"><img src="/static/imgs/pizza1.jpg" alt=""></div>
+                                <div data-foodName="pizza2" data-foodPrice="2300" class="img imgone"><img src="/static/imgs/pizza2.jpg" alt=""></div>
+                                <div data-foodName="pizza3" data-foodPrice="2400" class="img imgone"><img src="/static/imgs/pizza3.jpg" alt=""></div>
+                                <div data-foodName="pizza4" data-foodPrice="2500" class="img imgone"><img src="/static/imgs/pizza4.jpg" alt=""></div>
+                                <div data-foodName="pizza5" data-foodPrice="2600" class="img imgone"><img src="/static/imgs/pizza5.jpg" alt=""></div>
+                                <div data-foodName="pizza6" data-foodPrice="2700" class="img imgone"><img src="/static/imgs/pizza6.jpg" alt=""></div>
+                                <div data-foodName="pizza7" data-foodPrice="2800" class="img imgone"><img src="/static/imgs/pizza7.jpg" alt=""></div>
+                                <div data-foodName="pizza8" data-foodPrice="3200" class="img imgone"><img src="/static/imgs/pizza8.jpg" alt=""></div>
+                            </div>
+                            <div class="lines-spliter">
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                            </div>
+                        </div>
+                        <div class="chickens">
+                            <h3 class="text-white mb-3">Chicken</h3>
+                            <div class="chickens-itmes flex-wrap  justify-content-center gap-2 d-flex">
+                                <div data-foodName="chickens1" data-foodPrice="2000" class="img imgone"><img src="/static/imgs/nugget1.jpg" alt=""></div>
+                                <div data-foodName="chickens2" data-foodPrice="2200" class="img imgone"><img src="/static/imgs/nugget2.jpg" alt=""></div>
+                                <div data-foodName="chickens3" data-foodPrice="2100" class="img imgone"><img src="/static/imgs/nugget3.jpg" alt=""></div>
+                                <div data-foodName="chickens4" data-foodPrice="2500" class="img imgone"><img src="/static/imgs/nugget4.jpg" alt=""></div>
+                                <div data-foodName="chickens5" data-foodPrice="2600" class="img imgone"><img src="/static/imgs/nugget5.jpg" alt=""></div>
+                                <div data-foodName="chickens6" data-foodPrice="2770" class="img imgone"><img src="/static/imgs/nugget6.jpg" alt=""></div>
+                                <div data-foodName="chickens7" data-foodPrice="3300" class="img imgone"><img src="/static/imgs/nugget7.jpg" alt=""></div>
+                                <div data-foodName="chickens8" data-foodPrice="3400" class="img imgone"><img src="/static/imgs/nugget8.jpg" alt=""></div>
+                            </div>
+                            <div class="lines-spliter">
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                            </div>
+                        </div>
+                        <div class="sandwashies">
+                            <h3 class="text-white mb-3">Sandwish</h3>
+                            <div class="pizza-itmes gap-2 justify-content-center d-flex flex-wrap">
+                                <div data-foodName="sandwish1" data-foodPrice="1200" class="img imgone"><img src="/static/imgs/sandwish1.jpg" alt=""></div>
+                                <div data-foodName="sandwish2" data-foodPrice="1500" class="img imgone"><img src="/static/imgs/sandwish2.jpg" alt=""></div>
+                                <div data-foodName="sandwish3" data-foodPrice="1300" class="img imgone"><img src="/static/imgs/sandwish3.jpg" alt=""></div>
+                                <div data-foodName="sandwish4" data-foodPrice="1350" class="img imgone"><img src="/static/imgs/sandwish4.jpg" alt=""></div>
+                                <div data-foodName="sandwish5" data-foodPrice="1350" class="img imgone"><img src="/static/imgs/sandwish5.jpg" alt=""></div>
+                                <div data-foodName="sandwish6" data-foodPrice="1300" class="img imgone"><img src="/static/imgs/sandwish6.jpg" alt=""></div>
+                                <div data-foodName="sandwish7" data-foodPrice="1200" class="img imgone"><img src="/static/imgs/sandwish7.jpg" alt=""></div>
+                                <div data-foodName="sandwish8" data-foodPrice="2000" class="img imgone"><img src="/static/imgs/sandwish8.jpg" alt=""></div>
+                            </div>
+                            <div class="lines-spliter">
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                            </div>
+                        </div>
+                        <div class="hamburger">
+                            <h3 class="text-white mb-3">Hamburger</h3>
+                            <div class="pizza-itmes gap-2 justify-content-center d-flex flex-wrap">
+                                <div data-foodName="hambrger1" data-foodPrice="1200" class="img imgone"><img src="/static/imgs/burger1.jpg" alt=""></div>
+                                <div data-foodName="hambrger2" data-foodPrice="1400" class="img imgone"><img src="/static/imgs/burger2.jpg" alt=""></div>
+                                <div data-foodName="hambrger3" data-foodPrice="1300" class="img imgone"><img src="/static/imgs/burger3.jpg" alt=""></div>
+                                <div data-foodName="hambrger4" data-foodPrice="1750" class="img imgone"><img src="/static/imgs/burger4.jpg" alt=""></div>
+                                <div data-foodName="hambrger5" data-foodPrice="1400" class="img imgone"><img src="/static/imgs/burger5.jpg" alt=""></div>
+                                <div data-foodName="hambrger6" data-foodPrice="2000" class="img imgone"><img src="/static/imgs/burger6.jpg" alt=""></div>
+                                <div data-foodName="hambrger7" data-foodPrice="2500" class="img imgone"><img src="/static/imgs/burger7.jpg" alt=""></div>
+                                <div data-foodName="hambrger8" data-foodPrice="2100" class="img imgone"><img src="/static/imgs/burger8.jpg" alt=""></div>
+                            </div>
+                            <div class="lines-spliter">
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                            </div>
+                        </div>
+                        <div class="drinks">
+                            <h3 class="text-white mb-3">Drinks</h3>
+                            <div class="pizza-itmes gap-2 justify-content-center flex-wrap d-flex">
+                                <div data-foodName="drink1" data-foodPrice="300" class="img imgone"><img src="/static/imgs/drink1.jpg" alt=""></div>
+                                <div data-foodName="drink2" data-foodPrice="200" class="img imgone"><img src="/static/imgs/drink2.jpg" alt=""></div>
+                                <div data-foodName="drink3" data-foodPrice="500" class="img imgone"><img src="/static/imgs/drink3.jpg" alt=""></div>
+                                <div data-foodName="drink4" data-foodPrice="550" class="img imgone"><img src="/static/imgs/drink4.jpg" alt=""></div>
+                                <div data-foodName="drink5" data-foodPrice="600" class="img imgone"><img src="/static/imgs/drink5.jpg" alt=""></div>
+                                <div data-foodName="drink6" data-foodPrice="700" class="img imgone"><img src="/static/imgs/drink6.jpg" alt=""></div>
+                                <div data-foodName="drink7" data-foodPrice="400" class="img imgone"><img src="/static/imgs/drink7.jpg" alt=""></div>
+                                <div data-foodName="drink8" data-foodPrice="1000" class="img imgone"><img src="/static/imgs/drink8.jpg" alt=""></div>
+                            </div>
+                            <div class="lines-spliter">
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                                <div class="mini-line white-line"></div>
+                                <div class="mini-line orange-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="orderedFood-form position-relative  flex-column gap-4">
+                    <button class="position-absolute p-2 top-0 goback"><i class="fas fa-arrow-left"></i></button>
+                    <div class="orderFood-img d-flex flex-sm-nowrap justify-content-sm-start justify-content-center flex-wrap gap-3">
+                        <img src="/static/imgs/burger1.jpg" alt="">
+                        <div class="card align-self-center bg-transparent border-0 ">
+                            <div class="fs-5"><span class="orange">Name:</span>  <span class="FoodName text-white">Pizza 1</span></div>
+                            <div class="fs-5"><span class="orange">price:</span>  <span class="FoodPrice text-white"></span></div>
+                            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vitae ratione doloribus.</p>
+                        </div>
+                    </div>
+                    <div class="orderedFood-info d-flex flex-column gap-3 px-3">
+                        <div class="size d-flex align-items-center justify-content-between w-50">
+                            <label class="orange fs-5">Size: </label>
+                            <ul class="list-unstyled d-flex align-items-center gap-0 mb-0">
+                                <li><button class="sec1 clicked">S</button></li>
+                                <li><button class="sec1 ">M</button></li>
+                                <li><button class="sec1 ">L</button></li>
+                            </ul>
+                        </div>
+                        <div class="number">
+                            <label class="orange fs-5 me-4">Number: </label>
+                            <input type="number" max="5" min="1" value="1">
+                        </div>   
+                        <textarea class="orderedFood-note" placeholder="Add any Deatails"></textarea>
+                    </div>
+                    <div class="lines-spliter">
+                        <div class="mini-line orange-line"></div>
+                        <div class="mini-line white-line"></div>
+                        <div class="mini-line orange-line"></div>
+                        <div class="mini-line white-line"></div>
+                        <div class="mini-line orange-line"></div>
+                    </div>
+                    <button class="button additem p-2 fs-6 align-self-center">Order</button>
+                </div>
+            </div>
+        </div>
+{% include 'footer.html' %}
+
+{% endblock body%}

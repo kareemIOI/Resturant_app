@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main.urls')),
-    path('registrations/', include('apps.registration.urls')),
+    path('', include('apps.registration.urls')),
 ]
+handler404 = 'apps.main.views.error_404_view'

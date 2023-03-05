@@ -1,0 +1,56 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %} {% comment %} ON PURPOSE COMMENTED {% endcomment %}
+{% block title %}404 Page{% endblock title %}
+{% load static %}
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-0 position-fixed w-100 text-white">
+            <div class="container">
+                <img src="/static/imgs/logo2.png" class=" navbar-brand me-5" alt="">
+                <!-- <a class="navbar-brand me-5" href="#"></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-white pb-4 pb-md-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 justify-content-center gap-3">
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link text-white" href="{% url 'chefs' %}">Chefs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="blog">Blogs</a>
+                        </li>
+                        <li class="nav-item align-self-center mb-3 mb-md-0">
+                            <a class="nav-link text-white" href="contact">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center justify-content-center mb-3 mb-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="me-3 list-unstyled">{{user.first_name}}</li>
+                        <a href="accounts/logout" class="logout text-decoration-none border-1 border-white btn text-white">logout</a>
+                        {% else %}
+                            <a href="accounts/login" id="login" class="border-1 border-white btn text-decoration-none me-3 text-white">Log in</a>
+                            <a href="accounts/register" id="signup" class="border-1 border-white btn text-decoration-none text-white">Sign up</a>
+                            {% endif%}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="error py-2 position-relative" style="width: 100vw; height: 100vh">
+            <div class="container text-center   ">
+                <div class="error-container">
+                    <video src="/static/imgs/opps2.mp4" style="height: 100%; width: 100%;top: 0;left: 0;position: absolute;" loop muted autoplay></video>
+                    <div class="error-text position-absolute top-0   d-flex align-items-center flex-column justify-content-center" style="left: 0;top: 0;width: 100%;height: 100%; ">
+                        <h1 class=" fw-bold" style="font-size: 8rem;mix-blend-mode:multiply; color: white; background-color: black;">Oops!</h1>
+                        <h4>404- PAGE NOT FOUND</h4>
+                        <p>please check your internet connection</p>
+                        <button>GO TO HOMEPAGE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include 'footer.html' %}
+
+<!-- <h4 style = 'padding-top : 200px'>this is contact-us page.. there is a padding-top: 200px to get this appearing here<br> because if not the h4 will be behind the nav</h4> -->

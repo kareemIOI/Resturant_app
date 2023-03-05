@@ -1,5 +1,6 @@
-{% include 'base.html' %}
-    <body class="px-3">
+{% extends 'base.html' %}
+{% block body %}
+{% comment %} <body class="px-3"> {% endcomment %}
         <div class="d-flex justify-content-center">
             <div class="logo"></div>
         </div>
@@ -68,4 +69,4 @@
                 <li class="fw-bold"><a class="text-white text-decoration-none" href="">Terms & Condtions </a></li>
                 <li class="fw-bold"><a class="text-white text-decoration-none" href="">Website Terms of Use </a></li>
             </ul>
-        </footer> {% endcomment %}
+        </footer> {% endcomment %}{% endblock body %}
